@@ -14,7 +14,7 @@ function CourseCard({ course, index, onBuy }) {
 
   return (
     <motion.div
-      className={`relative group ${course.popular ? 'md:-mt-4 md:mb-4' : ''}`}
+      className={`relative group ${course.popular ? 'lg:-mt-4 lg:mb-4' : ''}`}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
@@ -123,7 +123,7 @@ export default function CoursesSection() {
   const [selectedCourse, setSelectedCourse] = useState(null)
 
   return (
-    <section id="cursos" className="relative py-28 section-divider">
+    <section id="cursos" className="relative py-16 sm:py-20 md:py-28 section-divider">
       {/* Subtle background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] pointer-events-none" aria-hidden="true">
         <div className="absolute inset-0 bg-primary-600/[0.03] rounded-full blur-[150px]" />
@@ -136,7 +136,7 @@ export default function CoursesSection() {
           description="Desde principiante hasta experto empresarial. Cada curso incluye acceso de por vida, actualizaciones gratuitas y certificado."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 items-start">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 items-start">
           {COURSES.map((course, i) => (
             <CourseCard
               key={course.id}

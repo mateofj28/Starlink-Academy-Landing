@@ -50,7 +50,7 @@ function TestimonialCard({ testimonial, index }) {
 
 export default function TestimonialsSection() {
   return (
-    <section id="testimonios" className="relative py-28 section-divider">
+    <section id="testimonios" className="relative py-16 sm:py-20 md:py-28 section-divider">
       {/* Background glow */}
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-neon-500/[0.03] rounded-full blur-[150px] pointer-events-none" />
 
@@ -61,7 +61,7 @@ export default function TestimonialsSection() {
           description="Miles de personas ya transformaron su carrera con nuestros cursos de Starlink."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
           {TESTIMONIALS.map((t, i) => (
             <TestimonialCard key={t.name} testimonial={t} index={i} />
           ))}

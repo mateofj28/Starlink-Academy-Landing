@@ -57,7 +57,7 @@ export default function FaqSection() {
   const [openIndex, setOpenIndex] = useState(null)
 
   return (
-    <section id="faq" className="relative py-28 section-divider">
+    <section id="faq" className="relative py-16 sm:py-20 md:py-28 section-divider">
       <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-primary-600/[0.03] rounded-full blur-[150px] pointer-events-none" />
 
       <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">

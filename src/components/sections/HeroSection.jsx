@@ -40,8 +40,8 @@ export default function HeroSection() {
       </div>
 
       {/* Orbital rings decoration */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" aria-hidden="true">
-        <div className="relative w-[600px] h-[600px] md:w-[800px] md:h-[800px]">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none hidden sm:block" aria-hidden="true">
+        <div className="relative w-[500px] h-[500px] md:w-[700px] md:h-[700px] lg:w-[800px] lg:h-[800px]">
           {/* Ring 1 */}
           <div className="absolute inset-0 rounded-full border border-white/[0.03] animate-[spin_60s_linear_infinite]" />
           {/* Ring 2 */}
@@ -49,7 +49,7 @@ export default function HeroSection() {
           {/* Ring 3 */}
           <div className="absolute inset-24 rounded-full border border-dashed border-white/[0.02] animate-[spin_90s_linear_infinite]" />
           {/* Orbiting dot */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-primary-400/60 shadow-[0_0_10px_rgba(99,102,241,0.4)] animate-[spin_60s_linear_infinite]" style={{ transformOrigin: '50% 400px' }} />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-primary-400/60 shadow-[0_0_10px_rgba(99,102,241,0.4)] animate-[spin_60s_linear_infinite] md:block" style={{ transformOrigin: '50% 350px' }} />
         </div>
       </div>
 
@@ -70,7 +70,7 @@ export default function HeroSection() {
 
           {/* Heading */}
           <motion.h1
-            className="mt-8 text-5xl sm:text-6xl md:text-8xl font-bold leading-[0.95] tracking-tight font-[family-name:var(--font-display)]"
+            className="mt-8 text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight font-[family-name:var(--font-display)]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -95,7 +95,7 @@ export default function HeroSection() {
 
           {/* CTA Buttons */}
           <motion.div
-            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -110,7 +110,7 @@ export default function HeroSection() {
 
           {/* Stats */}
           <motion.div
-            className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto"
+            className="mt-16 sm:mt-20 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 max-w-3xl mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.7 }}

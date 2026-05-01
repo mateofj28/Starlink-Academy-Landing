@@ -13,7 +13,7 @@ export default function CtaSection() {
   )
 
   return (
-    <section className="relative py-32 overflow-hidden">
+    <section className="relative py-20 sm:py-24 md:py-32 overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px]">
@@ -32,8 +32,7 @@ export default function CtaSection() {
           transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-6 font-[family-name:var(--font-display)] tracking-tight leading-[1.1]">
-            ¿Listo para conectar
-            <br />
+            ¿Listo para conectar{' '}
             <span className="gradient-text">el futuro?</span>
           </h2>
           <p className="text-base text-white/30 mb-12 max-w-lg mx-auto leading-relaxed">
@@ -41,7 +40,7 @@ export default function CtaSection() {
             Sé parte de esta revolución.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
             <Button size="lg" onClick={() => scrollTo('cursos')}>
               Empezar ahora
               <ArrowRight className="w-4 h-4" />
