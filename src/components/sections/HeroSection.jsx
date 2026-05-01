@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Wifi, Zap, Globe, ChevronDown } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import Button from '../ui/Button'
 import StarField from '../ui/StarField'
 import { useScrollTo } from '../../hooks/useScrollTo'
@@ -10,111 +10,117 @@ export default function HeroSection() {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background layers */}
-      <StarField count={100} />
-      <div className="absolute inset-0 bg-grid animate-grid-move opacity-30" />
-      <div className="absolute inset-0 bg-gradient-to-b from-primary-950/80 via-dark-950/90 to-dark-950" />
+      {/* Deep space background */}
+      <StarField count={250} />
 
-      {/* Glowing orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-600/20 rounded-full blur-[120px]" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyber-500/15 rounded-full blur-[100px]" />
-
-      {/* Satellite illustration */}
-      <div className="absolute top-20 right-10 md:right-20 opacity-20 animate-float" aria-hidden="true">
-        <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
-          <ellipse cx="100" cy="100" rx="90" ry="30" stroke="rgba(59,130,246,0.4)" strokeWidth="1" strokeDasharray="4 4" />
-          <ellipse cx="100" cy="100" rx="60" ry="20" stroke="rgba(34,211,238,0.3)" strokeWidth="1" strokeDasharray="4 4" />
-          <circle cx="100" cy="100" r="6" fill="rgba(59,130,246,0.6)" />
-          <circle cx="100" cy="100" r="3" fill="rgba(34,211,238,0.8)" />
-          {/* Satellite body */}
-          <rect x="55" y="60" width="20" height="12" rx="2" fill="rgba(59,130,246,0.5)" transform="rotate(-20 65 66)" />
-          {/* Solar panels */}
-          <rect x="35" y="55" width="18" height="8" rx="1" fill="rgba(34,211,238,0.4)" transform="rotate(-20 44 59)" />
-          <rect x="77" y="65" width="18" height="8" rx="1" fill="rgba(34,211,238,0.4)" transform="rotate(-20 86 69)" />
-          {/* Signal waves */}
-          <path d="M 100 110 Q 100 130 80 150" stroke="rgba(59,130,246,0.3)" strokeWidth="1" fill="none" />
-          <path d="M 100 110 Q 100 135 120 155" stroke="rgba(59,130,246,0.3)" strokeWidth="1" fill="none" />
-          <path d="M 100 110 Q 100 140 100 160" stroke="rgba(34,211,238,0.3)" strokeWidth="1" fill="none" />
-        </svg>
+      {/* Aurora / nebula glow layers */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        {/* Top-left aurora */}
+        <div
+          className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] rounded-full animate-aurora"
+          style={{
+            background: 'radial-gradient(ellipse, rgba(99,102,241,0.12) 0%, transparent 70%)',
+          }}
+        />
+        {/* Bottom-right cyan glow */}
+        <div
+          className="absolute -bottom-1/4 -right-1/4 w-[700px] h-[700px] rounded-full animate-aurora"
+          style={{
+            background: 'radial-gradient(ellipse, rgba(6,182,212,0.08) 0%, transparent 70%)',
+            animationDelay: '-4s',
+          }}
+        />
+        {/* Center subtle pink */}
+        <div
+          className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full"
+          style={{
+            background: 'radial-gradient(ellipse, rgba(139,92,246,0.06) 0%, transparent 70%)',
+          }}
+        />
       </div>
 
-      {/* Antenna illustration bottom-left */}
-      <div className="absolute bottom-32 left-5 md:left-16 opacity-15" aria-hidden="true">
-        <svg width="120" height="160" viewBox="0 0 120 160" fill="none">
-          {/* Dish */}
-          <ellipse cx="60" cy="40" rx="50" ry="20" stroke="rgba(59,130,246,0.5)" strokeWidth="2" fill="rgba(59,130,246,0.05)" />
-          <ellipse cx="60" cy="40" rx="35" ry="14" stroke="rgba(34,211,238,0.3)" strokeWidth="1" />
-          <circle cx="60" cy="40" r="5" fill="rgba(34,211,238,0.5)" />
-          {/* Stand */}
-          <line x1="60" y1="60" x2="60" y2="140" stroke="rgba(59,130,246,0.4)" strokeWidth="3" />
-          <line x1="40" y1="140" x2="80" y2="140" stroke="rgba(59,130,246,0.4)" strokeWidth="3" />
-          {/* Signal */}
-          <path d="M 60 20 Q 60 5 50 -5" stroke="rgba(34,211,238,0.3)" strokeWidth="1" fill="none" strokeDasharray="3 3" />
-          <path d="M 60 20 Q 60 0 70 -10" stroke="rgba(34,211,238,0.3)" strokeWidth="1" fill="none" strokeDasharray="3 3" />
-        </svg>
+      {/* Orbital rings decoration */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" aria-hidden="true">
+        <div className="relative w-[600px] h-[600px] md:w-[800px] md:h-[800px]">
+          {/* Ring 1 */}
+          <div className="absolute inset-0 rounded-full border border-white/[0.03] animate-[spin_60s_linear_infinite]" />
+          {/* Ring 2 */}
+          <div className="absolute inset-12 rounded-full border border-white/[0.02] animate-[spin_45s_linear_infinite_reverse]" />
+          {/* Ring 3 */}
+          <div className="absolute inset-24 rounded-full border border-dashed border-white/[0.02] animate-[spin_90s_linear_infinite]" />
+          {/* Orbiting dot */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-primary-400/60 shadow-[0_0_10px_rgba(99,102,241,0.4)] animate-[spin_60s_linear_infinite]" style={{ transformOrigin: '50% 400px' }} />
+        </div>
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
         <div className="text-center max-w-4xl mx-auto">
+          {/* Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-primary-500/10 text-primary-400 border border-primary-500/20 mb-6">
-              <Wifi className="w-4 h-4" />
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[11px] font-medium tracking-[0.15em] uppercase text-white/40 border border-white/[0.06] bg-white/[0.02]">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               Internet satelital de nueva generación
             </span>
           </motion.div>
 
+          {/* Heading */}
           <motion.h1
-            className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-tight mb-6"
+            className="mt-8 text-5xl sm:text-6xl md:text-8xl font-bold leading-[0.95] tracking-tight font-[family-name:var(--font-display)]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            Domina la tecnología{' '}
-            <span className="gradient-text">Starlink</span>
+            <span className="text-white">Domina la</span>
+            <br />
+            <span className="gradient-text">tecnología</span>
+            <br />
+            <span className="text-white">Starlink</span>
           </motion.h1>
 
+          {/* Subtitle */}
           <motion.p
-            className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed"
+            className="mt-8 text-base md:text-lg text-white/35 max-w-xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             Aprende a instalar, configurar y monetizar tus conocimientos en internet satelital.
-            Conviértete en un experto certificado en la tecnología que está conectando al mundo.
+            Conviértete en un experto certificado.
           </motion.p>
 
+          {/* CTA Buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.45 }}
+            transition={{ duration: 0.8, delay: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <Button size="lg" onClick={() => scrollTo('cursos')}>
-              <Zap className="w-5 h-5" />
-              Ver cursos disponibles
+              Ver cursos
             </Button>
             <Button variant="secondary" size="lg" onClick={() => scrollTo('testimonios')}>
-              <Globe className="w-5 h-5" />
-              Ver testimonios
+              Testimonios
             </Button>
           </motion.div>
 
           {/* Stats */}
           <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.7 }}
           >
             {STATS.map((stat) => (
               <div key={stat.label} className="text-center">
-                <p className="text-2xl md:text-3xl font-bold gradient-text">{stat.value}</p>
-                <p className="text-xs md:text-sm text-slate-500 mt-1">{stat.label}</p>
+                <p className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-display)] tracking-tight">
+                  {stat.value}
+                </p>
+                <p className="text-[11px] text-white/25 mt-1.5 tracking-wider uppercase">{stat.label}</p>
               </div>
             ))}
           </motion.div>
@@ -122,19 +128,22 @@ export default function HeroSection() {
 
         {/* Scroll indicator */}
         <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
         >
           <button
             onClick={() => scrollTo('cursos')}
-            className="text-slate-500 hover:text-primary-400 transition-colors cursor-pointer"
+            className="text-white/15 hover:text-white/40 transition-colors duration-500 cursor-pointer"
             aria-label="Scroll hacia abajo"
           >
-            <ChevronDown className="w-6 h-6" />
+            <ChevronDown className="w-5 h-5" />
           </button>
         </motion.div>
       </div>
+
+      {/* Bottom gradient fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black to-transparent pointer-events-none" />
     </section>
   )
 }

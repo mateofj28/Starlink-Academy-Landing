@@ -2,25 +2,25 @@ import { motion } from 'framer-motion'
 
 const variants = {
   primary:
-    'bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400 text-white shadow-lg shadow-primary-500/25',
+    'relative bg-white text-black font-semibold hover:bg-white/90 shadow-[0_0_20px_rgba(255,255,255,0.1)]',
   secondary:
-    'bg-white/10 hover:bg-white/20 text-white border border-white/20',
+    'relative bg-transparent text-white border border-white/15 hover:border-white/30 hover:bg-white/[0.03]',
   whatsapp:
-    'bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white shadow-lg shadow-green-500/25',
+    'relative bg-[#25D366] text-white font-semibold hover:bg-[#20BD5A] shadow-[0_0_20px_rgba(37,211,102,0.15)]',
   outline:
-    'border-2 border-primary-500 text-primary-400 hover:bg-primary-500/10',
+    'relative border border-primary-500/30 text-primary-400 hover:bg-primary-500/10 hover:border-primary-500/50',
   ghost:
-    'text-primary-400 hover:text-primary-300 hover:bg-white/5',
+    'relative text-white/60 hover:text-white hover:bg-white/[0.04]',
 }
 
 const sizes = {
-  sm: 'px-4 py-2 text-sm',
-  md: 'px-6 py-3 text-base',
-  lg: 'px-8 py-4 text-lg',
+  sm: 'px-5 py-2.5 text-sm',
+  md: 'px-7 py-3.5 text-sm',
+  lg: 'px-9 py-4 text-base',
 }
 
 /**
- * Reusable button component with variants and animations
+ * Premium button with subtle hover animations
  */
 export default function Button({
   children,
@@ -36,12 +36,12 @@ export default function Button({
   ...props
 }) {
   const baseClasses =
-    'inline-flex items-center justify-center gap-2 font-semibold rounded-xl transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed'
+    'inline-flex items-center justify-center gap-2.5 font-medium rounded-full transition-all duration-300 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed tracking-wide'
   const classes = `${baseClasses} ${variants[variant]} ${sizes[size]} ${className}`
 
   const content = (
     <>
-      {icon && <span className="text-xl">{icon}</span>}
+      {icon && <span className="text-lg">{icon}</span>}
       {children}
     </>
   )
@@ -53,8 +53,8 @@ export default function Button({
         target={target}
         rel={target === '_blank' ? 'noopener noreferrer' : undefined}
         className={classes}
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.97 }}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
         {...props}
       >
         {content}
@@ -68,8 +68,8 @@ export default function Button({
       onClick={onClick}
       disabled={disabled}
       className={classes}
-      whileHover={{ scale: disabled ? 1 : 1.03 }}
-      whileTap={{ scale: disabled ? 1 : 0.97 }}
+      whileHover={{ scale: disabled ? 1 : 1.02 }}
+      whileTap={{ scale: disabled ? 1 : 0.98 }}
       {...props}
     >
       {content}

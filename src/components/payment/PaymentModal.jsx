@@ -37,7 +37,6 @@ export default function PaymentModal({ course, onClose }) {
 
   async function handlePayment() {
     setProcessing(true)
-    // Simulate payment processing
     await new Promise((resolve) => setTimeout(resolve, 2500))
     setProcessing(false)
     setStep(2)
@@ -78,24 +77,24 @@ export default function PaymentModal({ course, onClose }) {
         exit={{ opacity: 0 }}
       >
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
+        <div className="absolute inset-0 bg-black/80 backdrop-blur-xl" onClick={onClose} />
 
         {/* Modal */}
         <motion.div
-          className="relative w-full max-w-lg glass rounded-2xl overflow-hidden"
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.9, opacity: 0 }}
-          transition={{ type: 'spring', damping: 25 }}
+          className="relative w-full max-w-lg bg-[#0a0a0a] border border-white/[0.06] rounded-2xl overflow-hidden"
+          initial={{ scale: 0.95, opacity: 0, y: 20 }}
+          animate={{ scale: 1, opacity: 1, y: 0 }}
+          exit={{ scale: 0.95, opacity: 0, y: 20 }}
+          transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           {/* Close button */}
           {currentStep !== 'success' && (
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors z-10 cursor-pointer"
+              className="absolute top-4 right-4 p-2 rounded-full text-white/20 hover:text-white/50 hover:bg-white/[0.04] transition-all z-10 cursor-pointer"
               aria-label="Cerrar"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4" />
             </button>
           )}
 
@@ -105,44 +104,42 @@ export default function PaymentModal({ course, onClose }) {
               <div className="flex items-center gap-3 mb-2">
                 <span className="text-2xl">{course.icon}</span>
                 <div>
-                  <h3 className="text-lg font-bold text-white">{course.title}</h3>
-                  <p className="text-sm text-slate-400">{course.subtitle}</p>
+                  <h3 className="text-base font-semibold text-white font-[family-name:var(--font-display)]">{course.title}</h3>
+                  <p className="text-xs text-white/30">{course.subtitle}</p>
                 </div>
               </div>
               <div className="flex items-baseline gap-2 mt-3">
-                <span className="text-2xl font-extrabold text-white">
+                <span className="text-xl font-bold text-white font-[family-name:var(--font-display)]">
                   {formatCurrency(course.price)}
                 </span>
                 {course.originalPrice > course.price && (
-                  <span className="text-sm text-slate-500 line-through">
+                  <span className="text-xs text-white/20 line-through">
                     {formatCurrency(course.originalPrice)}
                   </span>
                 )}
               </div>
 
               {/* Step indicator */}
-              <div className="flex items-center gap-2 mt-5">
+              <div className="flex items-center gap-3 mt-6">
                 {['Datos', 'Pago'].map((label, i) => (
                   <div key={label} className="flex items-center gap-2 flex-1">
                     <div
-                      className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-colors ${
+                      className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-semibold transition-all duration-300 ${
                         i <= step
-                          ? 'bg-primary-500 text-white'
-                          : 'bg-white/10 text-slate-500'
+                        ? 'bg-white text-black'
+                        : 'bg-white/[0.04] text-white/20 border border-white/[0.06]'
                       }`}
                     >
                       {i + 1}
                     </div>
                     <span
-                      className={`text-xs font-medium ${
-                        i <= step ? 'text-white' : 'text-slate-500'
+                      className={`text-[11px] font-medium tracking-wide ${i <= step ? 'text-white/60' : 'text-white/15'
                       }`}
                     >
                       {label}
                     </span>
                     {i < 1 && (
-                      <div className={`flex-1 h-0.5 rounded ${
-                        step > i ? 'bg-primary-500' : 'bg-white/10'
+                      <div className={`flex-1 h-px rounded ${step > i ? 'bg-white/20' : 'bg-white/[0.04]'
                       }`} />
                     )}
                   </div>
@@ -160,7 +157,7 @@ export default function PaymentModal({ course, onClose }) {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: 0.25 }}
                   className="space-y-4"
                 >
                   <Input
@@ -204,7 +201,7 @@ export default function PaymentModal({ course, onClose }) {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: 0.25 }}
                   className="space-y-4"
                 >
                   <Input
@@ -246,11 +243,10 @@ export default function PaymentModal({ course, onClose }) {
                     />
                   </div>
 
-                  {/* Security badge */}
-                  <div className="flex items-center gap-2 text-xs text-slate-500 pt-1">
-                    <Shield className="w-4 h-4 text-green-500" />
+                  <div className="flex items-center gap-2 text-[11px] text-white/20 pt-1">
+                    <Shield className="w-3.5 h-3.5 text-emerald-400/50" />
                     <span>Pago seguro con encriptación SSL de 256 bits</span>
-                    <Lock className="w-3 h-3 text-green-500" />
+                    <Lock className="w-3 h-3 text-emerald-400/50" />
                   </div>
 
                   <div className="flex gap-3 mt-2">
@@ -269,7 +265,7 @@ export default function PaymentModal({ course, onClose }) {
                     >
                       {processing ? (
                         <>
-                          <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                          <span className="w-4 h-4 border-2 border-black/20 border-t-black rounded-full animate-spin" />
                           Procesando...
                         </>
                       ) : (
