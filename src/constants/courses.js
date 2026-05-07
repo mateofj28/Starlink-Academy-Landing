@@ -73,7 +73,7 @@ export const COURSES = [
   },
 ]
 
-export const WHATSAPP_NUMBER = '573001234567'
+export const WHATSAPP_NUMBER = '573108854258'
 export const WHATSAPP_BASE_URL = 'https://wa.me'
 
 export const STATS = [
