@@ -50,7 +50,7 @@ function TestimonialCard({ testimonial, index }) {
 
 export default function TestimonialsSection() {
   return (
-    <section id="testimonios" className="relative py-16 sm:py-20 md:py-28 section-divider">
+    <section id="testimonios" className="relative py-16 sm:py-20 md:py-28 section-divider overflow-hidden">
       {/* Background glow */}
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-neon-500/[0.03] rounded-full blur-[150px] pointer-events-none" />
 

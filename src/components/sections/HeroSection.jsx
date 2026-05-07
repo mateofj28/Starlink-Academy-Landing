@@ -13,48 +13,29 @@ export default function HeroSection() {
       {/* Deep space background */}
       <StarField count={250} />
 
-      {/* Aurora / nebula glow layers */}
+      {/* Aurora glow */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        {/* Top-left aurora */}
         <div
           className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] rounded-full animate-aurora"
-          style={{
-            background: 'radial-gradient(ellipse, rgba(99,102,241,0.12) 0%, transparent 70%)',
-          }}
+          style={{ background: 'radial-gradient(ellipse, rgba(99,102,241,0.12) 0%, transparent 70%)' }}
         />
-        {/* Bottom-right cyan glow */}
         <div
           className="absolute -bottom-1/4 -right-1/4 w-[700px] h-[700px] rounded-full animate-aurora"
-          style={{
-            background: 'radial-gradient(ellipse, rgba(6,182,212,0.08) 0%, transparent 70%)',
-            animationDelay: '-4s',
-          }}
-        />
-        {/* Center subtle pink */}
-        <div
-          className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full"
-          style={{
-            background: 'radial-gradient(ellipse, rgba(139,92,246,0.06) 0%, transparent 70%)',
-          }}
+          style={{ background: 'radial-gradient(ellipse, rgba(6,182,212,0.08) 0%, transparent 70%)', animationDelay: '-4s' }}
         />
       </div>
 
-      {/* Orbital rings decoration */}
+      {/* Orbital rings */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none hidden sm:block" aria-hidden="true">
         <div className="relative w-[500px] h-[500px] md:w-[700px] md:h-[700px] lg:w-[800px] lg:h-[800px]">
-          {/* Ring 1 */}
           <div className="absolute inset-0 rounded-full border border-white/[0.03] animate-[spin_60s_linear_infinite]" />
-          {/* Ring 2 */}
           <div className="absolute inset-12 rounded-full border border-white/[0.02] animate-[spin_45s_linear_infinite_reverse]" />
-          {/* Ring 3 */}
           <div className="absolute inset-24 rounded-full border border-dashed border-white/[0.02] animate-[spin_90s_linear_infinite]" />
-          {/* Orbiting dot */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-primary-400/60 shadow-[0_0_10px_rgba(99,102,241,0.4)] animate-[spin_60s_linear_infinite] md:block" style={{ transformOrigin: '50% 350px' }} />
         </div>
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 w-full">
         <div className="text-center max-w-4xl mx-auto">
           {/* Badge */}
           <motion.div

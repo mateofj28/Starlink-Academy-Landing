@@ -53,7 +53,7 @@ export default function Navbar() {
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-primary-400" />
             </div>
             <span className="text-base font-semibold text-white tracking-wide font-[family-name:var(--font-display)]">
-              STARLINK ACADEMY
+              STARLINK ACADEMY MR SAT
             </span>
           </button>
 
