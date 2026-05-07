@@ -5,6 +5,7 @@ import ImageDivider from './components/ui/ImageDivider'
 import HeroSection from './components/sections/HeroSection'
 import CoursesSection from './components/sections/CoursesSection'
 import TestimonialsSection from './components/sections/TestimonialsSection'
+import SurveySection from './components/sections/SurveySection'
 import FaqSection from './components/sections/FaqSection'
 import CtaSection from './components/sections/CtaSection'
 
@@ -24,6 +25,7 @@ export default function App() {
         <ImageDivider src={img2} alt="Instructor con equipos Starlink" />
         <TestimonialsSection />
         <ImageDivider src={img3} alt="Instructor mostrando Starlink" />
+        <SurveySection />
         <FaqSection />
         <ImageDivider src={img4} alt="Instructor con antena Starlink" />
         <CtaSection />

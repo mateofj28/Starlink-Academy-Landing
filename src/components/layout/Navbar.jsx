@@ -70,7 +70,7 @@ export default function Navbar() {
             ))}
             <Button
               size="sm"
-              onClick={() => handleNav('cursos')}
+              onClick={() => handleNav('encuesta')}
             >
               Inscríbete
             </Button>
@@ -111,7 +111,7 @@ export default function Navbar() {
                 <Button
                   size="sm"
                   className="w-full"
-                  onClick={() => handleNav('cursos')}
+                  onClick={() => handleNav('encuesta')}
                 >
                   Inscríbete
                 </Button>
