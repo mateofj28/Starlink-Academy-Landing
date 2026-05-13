@@ -19,13 +19,13 @@ export default function App() {
     <div className="min-h-screen bg-black text-white">
       <Navbar />
       <main>
+        <SurveySection />
         <HeroSection />
         <ImageDivider src={img1} alt="Instructor con kit Starlink" />
         <CoursesSection />
         <ImageDivider src={img2} alt="Instructor con equipos Starlink" />
         <TestimonialsSection />
         <ImageDivider src={img3} alt="Instructor mostrando Starlink" />
-        <SurveySection />
         <FaqSection />
         <ImageDivider src={img4} alt="Instructor con antena Starlink" />
         <CtaSection />

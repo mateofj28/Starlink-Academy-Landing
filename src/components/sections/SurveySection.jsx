@@ -1,15 +1,14 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Send, CheckCircle } from 'lucide-react'
-import SectionTitle from '../ui/SectionTitle'
 import Button from '../ui/Button'
 
 export default function SurveySection() {
+  const [wantsToParticipate, setWantsToParticipate] = useState(null)
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
-    interested: '',
     timing: '',
   })
   const [submitted, setSubmitted] = useState(false)
@@ -24,17 +23,14 @@ export default function SurveySection() {
     e.preventDefault()
     setSending(true)
 
-    // Build email body
     const subject = encodeURIComponent('Nuevo formulario de interés – Curso Starlink')
     const body = encodeURIComponent(
       `Nombre: ${formData.name}\n` +
       `Celular: ${formData.phone}\n` +
       `Email: ${formData.email}\n\n` +
-      `¿Te gustaría formarte en distribución y manejo de antenas Starlink?\n${formData.interested}\n\n` +
-      `¿Estás interesado en tomar el curso próximamente?\n${formData.timing}`
+      `¿Interesado en tomar el curso?: ${formData.timing}`
     )
 
-    // Use FormSubmit service to send email without backend
     const form = new FormData()
     form.append('_subject', 'Nuevo formulario de interés – Curso Starlink')
     form.append('_captcha', 'false')
@@ -44,7 +40,7 @@ export default function SurveySection() {
     form.append('Nombre', formData.name)
     form.append('Celular', formData.phone)
     form.append('Email', formData.email)
-    form.append('Formarse-en-Starlink', formData.interested)
+    form.append('Participar', 'Sí')
     form.append('Tomar-curso', formData.timing)
 
     try {
@@ -54,7 +50,6 @@ export default function SurveySection() {
       })
       setSubmitted(true)
     } catch {
-      // Fallback: open mailto
       window.open(`mailto:comercial@soingtel.com?subject=${subject}&body=${body}`)
       setSubmitted(true)
     }
@@ -62,9 +57,10 @@ export default function SurveySection() {
     setSending(false)
   }
 
+  // Success state
   if (submitted) {
     return (
-      <section id="encuesta" className="relative py-16 sm:py-20 md:py-28 section-divider">
+      <section id="encuesta" className="relative pt-28 pb-16 sm:pt-32 sm:pb-20 md:pt-36 md:pb-28 section-divider">
         <div className="relative z-10 max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -86,191 +82,197 @@ export default function SurveySection() {
   }
 
   return (
-    <section id="encuesta" className="relative py-16 sm:py-20 md:py-28 section-divider">
+    <section id="encuesta" className="relative pt-28 pb-16 sm:pt-32 sm:pb-20 md:pt-36 md:pb-28 section-divider">
       {/* Background glow */}
       <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-primary-600/[0.03] rounded-full blur-[150px] pointer-events-none" />
 
       <div className="relative z-10 max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle
-          tag="Formulario de interés"
-          title="¿Quieres participar en el curso?"
-          description="Déjanos tus datos y te contactaremos con toda la información sobre el Curso Starlink e Internet Satelital."
-        />
-
-        <motion.form
-          onSubmit={handleSubmit}
-          className="glass-card rounded-2xl p-6 sm:p-8 md:p-10 space-y-6"
-          initial={{ opacity: 0, y: 40 }}
+        {/* Main question - always visible */}
+        <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
-          {/* Datos personales */}
-          <div>
-            <h4 className="text-xs font-semibold text-white/30 tracking-[0.15em] uppercase mb-4">
-              Datos personales
-            </h4>
-            <div className="space-y-4">
-              <div>
-                <label htmlFor="survey-name" className="block text-xs font-medium text-white/40 tracking-wide uppercase mb-1.5">
-                  Nombre completo
-                </label>
-                <input
-                  id="survey-name"
-                  name="name"
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Tu nombre"
-                  className="w-full rounded-xl bg-white/[0.03] border border-white/[0.06] px-4 py-3.5 text-white placeholder-white/20 outline-none transition-all duration-300 focus:ring-1 focus:ring-primary-500/30 focus:border-white/15 text-sm"
-                />
-              </div>
-              <div>
-                <label htmlFor="survey-phone" className="block text-xs font-medium text-white/40 tracking-wide uppercase mb-1.5">
-                  Número de celular
-                </label>
-                <input
-                  id="survey-phone"
-                  name="phone"
-                  type="tel"
-                  required
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="3101234567"
-                  maxLength={10}
-                  className="w-full rounded-xl bg-white/[0.03] border border-white/[0.06] px-4 py-3.5 text-white placeholder-white/20 outline-none transition-all duration-300 focus:ring-1 focus:ring-primary-500/30 focus:border-white/15 text-sm"
-                />
-              </div>
-              <div>
-                <label htmlFor="survey-email" className="block text-xs font-medium text-white/40 tracking-wide uppercase mb-1.5">
-                  Correo electrónico
-                </label>
-                <input
-                  id="survey-email"
-                  name="email"
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="tu@email.com"
-                  className="w-full rounded-xl bg-white/[0.03] border border-white/[0.06] px-4 py-3.5 text-white placeholder-white/20 outline-none transition-all duration-300 focus:ring-1 focus:ring-primary-500/30 focus:border-white/15 text-sm"
-                />
-              </div>
-            </div>
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-[0.2em] uppercase text-white/50 border border-white/[0.06] bg-white/[0.02] mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary-400 animate-pulse" />
+            Formulario de interés
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white font-[family-name:var(--font-display)] tracking-tight leading-[1.1] mb-8">
+            ¿Te gustaría participar en nuestro curso de internet satelital Starlink?
+          </h2>
+
+          {/* Yes / No buttons */}
+          <div className="flex items-center justify-center gap-4">
+            <button
+              onClick={() => setWantsToParticipate(true)}
+              className={`px-8 py-3.5 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer ${wantsToParticipate === true
+                ? 'bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.15)]'
+                : 'border border-white/[0.1] text-white/50 hover:border-white/20 hover:text-white/70'
+                }`}
+            >
+              Sí, me interesa
+            </button>
+            <button
+              onClick={() => setWantsToParticipate(false)}
+              className={`px-8 py-3.5 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer ${wantsToParticipate === false
+                ? 'bg-white/10 text-white border border-white/10'
+                : 'border border-white/[0.1] text-white/50 hover:border-white/20 hover:text-white/70'
+                }`}
+            >
+              No, gracias
+            </button>
           </div>
+        </motion.div>
 
-          {/* Preguntas */}
-          <div>
-            <h4 className="text-xs font-semibold text-white/30 tracking-[0.15em] uppercase mb-4">
-              Preguntas sobre el curso
-            </h4>
-            <div className="space-y-6">
-              {/* Pregunta 1 */}
-              <fieldset>
-                <legend className="text-sm text-white/50 mb-3">
-                  ¿Te gustaría formarte en distribución y manejo de antenas Starlink e internet satelital?
-                </legend>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <label className={`flex items-center gap-3 px-4 py-3 rounded-xl border cursor-pointer transition-all duration-300 ${formData.interested === 'Sí'
-                    ? 'border-primary-500/30 bg-primary-500/[0.06] text-white'
-                    : 'border-white/[0.06] bg-white/[0.02] text-white/40 hover:border-white/10'
-                    }`}>
-                    <input
-                      type="radio"
-                      name="interested"
-                      value="Sí"
-                      required
-                      checked={formData.interested === 'Sí'}
-                      onChange={handleChange}
-                      className="sr-only"
-                    />
-                    <span className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${formData.interested === 'Sí' ? 'border-primary-400' : 'border-white/20'
-                      }`}>
-                      {formData.interested === 'Sí' && <span className="w-2 h-2 rounded-full bg-primary-400" />}
-                    </span>
-                    <span className="text-sm">Sí</span>
-                  </label>
-                  <label className={`flex items-center gap-3 px-4 py-3 rounded-xl border cursor-pointer transition-all duration-300 ${formData.interested === 'No'
-                    ? 'border-primary-500/30 bg-primary-500/[0.06] text-white'
-                    : 'border-white/[0.06] bg-white/[0.02] text-white/40 hover:border-white/10'
-                    }`}>
-                    <input
-                      type="radio"
-                      name="interested"
-                      value="No"
-                      checked={formData.interested === 'No'}
-                      onChange={handleChange}
-                      className="sr-only"
-                    />
-                    <span className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${formData.interested === 'No' ? 'border-primary-400' : 'border-white/20'
-                      }`}>
-                      {formData.interested === 'No' && <span className="w-2 h-2 rounded-full bg-primary-400" />}
-                    </span>
-                    <span className="text-sm">No</span>
-                  </label>
-                </div>
-              </fieldset>
-
-              {/* Pregunta 2 */}
-              <fieldset>
-                <legend className="text-sm text-white/50 mb-3">
-                  ¿Estás interesado en tomar el curso próximamente?
-                </legend>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {[
-                    'Sí, quiero más información',
-                    'Sí, deseo inscribirme',
-                    'Tal vez más adelante',
-                    'No por el momento',
-                  ].map((option) => (
-                    <label
-                      key={option}
-                      className={`flex items-center gap-3 px-4 py-3 rounded-xl border cursor-pointer transition-all duration-300 ${formData.timing === option
-                        ? 'border-primary-500/30 bg-primary-500/[0.06] text-white'
-                        : 'border-white/[0.06] bg-white/[0.02] text-white/40 hover:border-white/10'
-                        }`}
-                    >
-                      <input
-                        type="radio"
-                        name="timing"
-                        value={option}
-                        required
-                        checked={formData.timing === option}
-                        onChange={handleChange}
-                        className="sr-only"
-                      />
-                      <span className={`w-4 h-4 rounded-full border-2 flex-shrink-0 flex items-center justify-center ${formData.timing === option ? 'border-primary-400' : 'border-white/20'
-                        }`}>
-                        {formData.timing === option && <span className="w-2 h-2 rounded-full bg-primary-400" />}
-                      </span>
-                      <span className="text-sm">{option}</span>
+        {/* Form - only shows if user clicks "Sí" */}
+        <AnimatePresence>
+          {wantsToParticipate === true && (
+            <motion.form
+              onSubmit={handleSubmit}
+              className="glass-card rounded-2xl p-6 sm:p-8 md:p-10 space-y-6"
+              initial={{ opacity: 0, y: 30, height: 0 }}
+              animate={{ opacity: 1, y: 0, height: 'auto' }}
+              exit={{ opacity: 0, y: -20, height: 0 }}
+              transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              {/* Datos personales */}
+              <div>
+                <h4 className="text-xs font-semibold text-white/30 tracking-[0.15em] uppercase mb-4">
+                  Datos personales
+                </h4>
+                <div className="space-y-4">
+                  <div>
+                    <label htmlFor="survey-name" className="block text-xs font-medium text-white/40 tracking-wide uppercase mb-1.5">
+                      Nombre completo
                     </label>
-                  ))}
+                    <input
+                      id="survey-name"
+                      name="name"
+                      type="text"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Tu nombre"
+                      className="w-full rounded-xl bg-white/[0.03] border border-white/[0.06] px-4 py-3.5 text-white placeholder-white/20 outline-none transition-all duration-300 focus:ring-1 focus:ring-primary-500/30 focus:border-white/15 text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="survey-phone" className="block text-xs font-medium text-white/40 tracking-wide uppercase mb-1.5">
+                      Número de celular
+                    </label>
+                    <input
+                      id="survey-phone"
+                      name="phone"
+                      type="tel"
+                      required
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="3101234567"
+                      maxLength={10}
+                      className="w-full rounded-xl bg-white/[0.03] border border-white/[0.06] px-4 py-3.5 text-white placeholder-white/20 outline-none transition-all duration-300 focus:ring-1 focus:ring-primary-500/30 focus:border-white/15 text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="survey-email" className="block text-xs font-medium text-white/40 tracking-wide uppercase mb-1.5">
+                      Correo electrónico
+                    </label>
+                    <input
+                      id="survey-email"
+                      name="email"
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="tu@email.com"
+                      className="w-full rounded-xl bg-white/[0.03] border border-white/[0.06] px-4 py-3.5 text-white placeholder-white/20 outline-none transition-all duration-300 focus:ring-1 focus:ring-primary-500/30 focus:border-white/15 text-sm"
+                    />
+                  </div>
                 </div>
-              </fieldset>
-            </div>
-          </div>
+              </div>
 
-          {/* Submit */}
-          <Button
-            type="submit"
-            className="w-full"
-            disabled={sending}
-          >
-            {sending ? (
-              <>
-                <span className="w-4 h-4 border-2 border-black/20 border-t-black rounded-full animate-spin" />
-                Enviando...
-              </>
-            ) : (
-              <>
-                <Send className="w-4 h-4" />
-                Enviar formulario
-              </>
-            )}
-          </Button>
-        </motion.form>
+              {/* Pregunta */}
+              <div>
+                <h4 className="text-xs font-semibold text-white/30 tracking-[0.15em] uppercase mb-4">
+                  Sobre el curso
+                </h4>
+                <fieldset>
+                  <legend className="text-sm text-white/50 mb-3">
+                    ¿Estás interesado en tomar el curso próximamente?
+                  </legend>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {[
+                      'Sí, quiero más información',
+                      'Sí, deseo inscribirme',
+                      'Tal vez más adelante',
+                      'No por el momento',
+                    ].map((option) => (
+                      <label
+                        key={option}
+                        className={`flex items-center gap-3 px-4 py-3 rounded-xl border cursor-pointer transition-all duration-300 ${formData.timing === option
+                          ? 'border-primary-500/30 bg-primary-500/[0.06] text-white'
+                          : 'border-white/[0.06] bg-white/[0.02] text-white/40 hover:border-white/10'
+                        }`}
+                      >
+                        <input
+                          type="radio"
+                          name="timing"
+                          value={option}
+                          required
+                          checked={formData.timing === option}
+                          onChange={handleChange}
+                          className="sr-only"
+                        />
+                        <span className={`w-4 h-4 rounded-full border-2 flex-shrink-0 flex items-center justify-center ${formData.timing === option ? 'border-primary-400' : 'border-white/20'
+                        }`}>
+                          {formData.timing === option && <span className="w-2 h-2 rounded-full bg-primary-400" />}
+                        </span>
+                        <span className="text-sm">{option}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+              </div>
+
+              {/* Submit */}
+              <Button
+                type="submit"
+                className="w-full"
+                disabled={sending}
+              >
+                {sending ? (
+                  <>
+                    <span className="w-4 h-4 border-2 border-black/20 border-t-black rounded-full animate-spin" />
+                    Enviando...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4" />
+                    Enviar formulario
+                  </>
+                )}
+              </Button>
+            </motion.form>
+          )}
+        </AnimatePresence>
+
+        {/* "No" message */}
+        <AnimatePresence>
+          {wantsToParticipate === false && (
+            <motion.div
+              className="text-center mt-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4 }}
+            >
+              <p className="text-sm text-white/30">
+                ¡No hay problema! Si cambias de opinión, aquí estaremos. 🚀
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   )
