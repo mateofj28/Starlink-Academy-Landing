@@ -100,7 +100,7 @@ export default function SurveySection() {
             Formulario de interés
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white font-[family-name:var(--font-display)] tracking-tight leading-[1.1] mb-8">
-            ¿Te gustaría participar en nuestro curso de internet satelital Starlink?
+            ¿Te gustaría participar en nuestro curso de tecnología Starlink?
           </h2>
 
           {/* Yes / No buttons */}
