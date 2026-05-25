@@ -1,5 +1,6 @@
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
+import WhatsAppFloat from './components/layout/WhatsAppFloat'
 import ImageDivider from './components/ui/ImageDivider'
 
 import HeroSection from './components/sections/HeroSection'
@@ -31,6 +32,7 @@ export default function App() {
         <CtaSection />
       </main>
       <Footer />
+      <WhatsAppFloat />
     </div>
   )
 }
