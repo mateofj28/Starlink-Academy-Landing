@@ -35,7 +35,7 @@ export default function CtaSection() {
             ¿Listo para conectar{' '}
             <span className="gradient-text">el futuro?</span>
           </h2>
-          <p className="text-base text-white/30 mb-12 max-w-lg mx-auto leading-relaxed">
+          <p className="text-base text-white/80 mb-12 max-w-lg mx-auto leading-relaxed">
             La tecnología Starlink está transformando la conectividad en Latinoamérica.
             Sé parte de esta revolución.
           </p>

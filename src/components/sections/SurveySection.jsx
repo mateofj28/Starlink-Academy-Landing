@@ -72,7 +72,7 @@ export default function SurveySection() {
             <h3 className="text-2xl font-semibold text-white font-[family-name:var(--font-display)] mb-3">
               ¡Gracias por tu interés!
             </h3>
-            <p className="text-sm text-white/30">
+            <p className="text-sm text-white/70">
               Hemos recibido tu información. Nos pondremos en contacto contigo pronto.
             </p>
           </motion.div>
@@ -95,7 +95,7 @@ export default function SurveySection() {
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-[0.2em] uppercase text-white/50 border border-white/[0.06] bg-white/[0.02] mb-6">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-[0.2em] uppercase text-white/80 border border-white/[0.06] bg-white/[0.02] mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-primary-400 animate-pulse" />
             Formulario de interés
           </span>
@@ -139,12 +139,12 @@ export default function SurveySection() {
             >
               {/* Datos personales */}
               <div>
-                <h4 className="text-xs font-semibold text-white/30 tracking-[0.15em] uppercase mb-4">
+                <h4 className="text-xs font-semibold text-white/70 tracking-[0.15em] uppercase mb-4">
                   Datos personales
                 </h4>
                 <div className="space-y-4">
                   <div>
-                    <label htmlFor="survey-name" className="block text-xs font-medium text-white/40 tracking-wide uppercase mb-1.5">
+                    <label htmlFor="survey-name" className="block text-xs font-medium text-white/80 tracking-wide uppercase mb-1.5">
                       Nombre completo
                     </label>
                     <input
@@ -159,7 +159,7 @@ export default function SurveySection() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="survey-phone" className="block text-xs font-medium text-white/40 tracking-wide uppercase mb-1.5">
+                    <label htmlFor="survey-phone" className="block text-xs font-medium text-white/80 tracking-wide uppercase mb-1.5">
                       Número de celular
                     </label>
                     <input
@@ -175,7 +175,7 @@ export default function SurveySection() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="survey-email" className="block text-xs font-medium text-white/40 tracking-wide uppercase mb-1.5">
+                    <label htmlFor="survey-email" className="block text-xs font-medium text-white/80 tracking-wide uppercase mb-1.5">
                       Correo electrónico
                     </label>
                     <input
@@ -194,11 +194,11 @@ export default function SurveySection() {
 
               {/* Pregunta */}
               <div>
-                <h4 className="text-xs font-semibold text-white/30 tracking-[0.15em] uppercase mb-4">
+                <h4 className="text-xs font-semibold text-white/70 tracking-[0.15em] uppercase mb-4">
                   Sobre el curso
                 </h4>
                 <fieldset>
-                  <legend className="text-sm text-white/50 mb-3">
+                  <legend className="text-sm text-white/80 mb-3">
                     ¿Estás interesado en tomar el curso próximamente?
                   </legend>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -212,7 +212,7 @@ export default function SurveySection() {
                         key={option}
                         className={`flex items-center gap-3 px-4 py-3 rounded-xl border cursor-pointer transition-all duration-300 ${formData.timing === option
                           ? 'border-primary-500/30 bg-primary-500/[0.06] text-white'
-                          : 'border-white/[0.06] bg-white/[0.02] text-white/40 hover:border-white/10'
+                          : 'border-white/[0.06] bg-white/[0.02] text-white/80 hover:border-white/10'
                         }`}
                       >
                         <input
@@ -267,7 +267,7 @@ export default function SurveySection() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4 }}
             >
-              <p className="text-sm text-white/30">
+              <p className="text-sm text-white/70">
                 ¡No hay problema! Si cambias de opinión, aquí estaremos. 🚀
               </p>
             </motion.div>

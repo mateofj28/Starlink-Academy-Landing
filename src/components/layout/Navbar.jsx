@@ -63,7 +63,7 @@ export default function Navbar() {
               <button
                 key={link.to}
                 onClick={() => handleNav(link.to)}
-                className="text-[13px] font-medium text-white/40 hover:text-white transition-colors duration-300 cursor-pointer tracking-wide"
+                className="text-[13px] font-medium text-white/80 hover:text-white transition-colors duration-300 cursor-pointer tracking-wide"
               >
                 {link.label}
               </button>
@@ -79,7 +79,7 @@ export default function Navbar() {
           {/* Mobile toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-white/50 hover:text-white cursor-pointer transition-colors"
+            className="md:hidden p-2 text-white/80 hover:text-white cursor-pointer transition-colors"
             aria-label="Menú"
           >
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -102,7 +102,7 @@ export default function Navbar() {
                 <button
                   key={link.to}
                   onClick={() => handleNav(link.to)}
-                  className="block w-full text-left px-4 py-3 rounded-lg text-white/50 hover:text-white hover:bg-white/[0.03] transition-all duration-300 cursor-pointer text-sm"
+                  className="block w-full text-left px-4 py-3 rounded-lg text-white/80 hover:text-white hover:bg-white/[0.03] transition-all duration-300 cursor-pointer text-sm"
                 >
                   {link.label}
                 </button>

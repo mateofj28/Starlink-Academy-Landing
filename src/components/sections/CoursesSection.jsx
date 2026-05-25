@@ -42,7 +42,7 @@ function CourseCard({ course, index, onBuy }) {
               <h3 className="text-lg font-semibold text-white mt-3 font-[family-name:var(--font-display)] tracking-tight">
                 {course.title}
               </h3>
-              <p className="text-sm text-white/30 mt-1">{course.subtitle}</p>
+              <p className="text-sm text-white/70 mt-1">{course.subtitle}</p>
             </div>
             {course.badge && (
               <span className="px-3 py-1 rounded-full text-[10px] font-semibold tracking-wider uppercase text-white/50 border border-white/[0.06] bg-white/[0.02]">
@@ -52,7 +52,7 @@ function CourseCard({ course, index, onBuy }) {
           </div>
 
           {/* Meta */}
-          <div className="flex flex-wrap gap-4 mb-6 text-[12px] text-white/25">
+          <div className="flex flex-wrap gap-4 mb-6 text-[12px] text-white/70">
             <span className="flex items-center gap-1.5">
               <Clock className="w-3.5 h-3.5" /> {course.duration}
             </span>
@@ -71,7 +71,7 @@ function CourseCard({ course, index, onBuy }) {
                 {formatCurrency(course.price)}
               </span>
               {course.originalPrice > course.price && (
-                <span className="text-sm text-white/20 line-through">
+                <span className="text-sm text-white/60 line-through">
                   {formatCurrency(course.originalPrice)}
                 </span>
               )}
@@ -86,7 +86,7 @@ function CourseCard({ course, index, onBuy }) {
           {/* Features */}
           <ul className="space-y-3 mb-8 flex-1">
             {course.features.map((feature) => (
-              <li key={feature} className="flex items-start gap-2.5 text-[13px] text-white/40">
+              <li key={feature} className="flex items-start gap-2.5 text-[13px] text-white/80">
                 <Check className="w-3.5 h-3.5 text-primary-400/60 shrink-0 mt-0.5" />
                 {feature}
               </li>

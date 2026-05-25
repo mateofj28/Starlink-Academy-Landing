@@ -65,7 +65,7 @@ export default function HeroSection() {
 
           {/* Subtitle */}
           <motion.p
-            className="mt-8 text-base md:text-lg text-white/35 max-w-xl mx-auto leading-relaxed"
+            className="mt-8 text-base md:text-lg text-white/80 max-w-xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -101,7 +101,7 @@ export default function HeroSection() {
                 <p className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-display)] tracking-tight">
                   {stat.value}
                 </p>
-                <p className="text-[11px] text-white/25 mt-1.5 tracking-wider uppercase">{stat.label}</p>
+                <p className="text-[11px] text-white/70 mt-1.5 tracking-wider uppercase">{stat.label}</p>
               </div>
             ))}
           </motion.div>

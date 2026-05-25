@@ -18,7 +18,7 @@ function FaqItem({ item, isOpen, onToggle, index }) {
         className="w-full flex items-center justify-between py-6 text-left cursor-pointer group"
         aria-expanded={isOpen}
       >
-        <span className={`text-sm md:text-[15px] font-medium pr-8 transition-colors duration-300 ${isOpen ? 'text-white' : 'text-white/50 group-hover:text-white/70'
+        <span className={`text-sm md:text-[15px] font-medium pr-8 transition-colors duration-300 ${isOpen ? 'text-white' : 'text-white/80 group-hover:text-white/70'
           }`}>
           {item.question}
         </span>
@@ -28,9 +28,9 @@ function FaqItem({ item, isOpen, onToggle, index }) {
           transition={{ duration: 0.3 }}
         >
           {isOpen ? (
-            <Minus className="w-3.5 h-3.5 text-white/40" />
+            <Minus className="w-3.5 h-3.5 text-white/80" />
           ) : (
-            <Plus className="w-3.5 h-3.5 text-white/30" />
+            <Plus className="w-3.5 h-3.5 text-white/80" />
           )}
         </motion.span>
       </button>
@@ -43,7 +43,7 @@ function FaqItem({ item, isOpen, onToggle, index }) {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <div className="pb-6 text-sm text-white/30 leading-relaxed max-w-2xl">
+            <div className="pb-6 text-sm text-white/80 leading-relaxed max-w-2xl">
               {item.answer}
             </div>
           </motion.div>

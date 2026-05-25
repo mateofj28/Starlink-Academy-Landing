@@ -14,7 +14,7 @@ export default function SectionTitle({ tag, title, description, className = '' }
     >
       {tag && (
         <motion.span
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-[0.2em] uppercase text-white/50 border border-white/[0.06] bg-white/[0.02] mb-6"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-[0.2em] uppercase text-white/80 border border-white/[0.06] bg-white/[0.02] mb-6"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -28,7 +28,7 @@ export default function SectionTitle({ tag, title, description, className = '' }
         {title}
       </h2>
       {description && (
-        <p className="text-base md:text-lg text-white/40 leading-relaxed max-w-2xl mx-auto">{description}</p>
+        <p className="text-base md:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto">{description}</p>
       )}
     </motion.div>
   )

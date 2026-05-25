@@ -16,35 +16,35 @@ export default function Footer() {
                 STARLINK ACADEMY MR SAT
               </span>
             </div>
-            <p className="text-[13px] text-white/20 leading-relaxed max-w-xs">
+            <p className="text-[13px] text-white/70 leading-relaxed max-w-xs">
               La plataforma líder en formación sobre tecnología Starlink en Latinoamérica.
             </p>
           </div>
 
           {/* Links */}
           <div>
-            <h4 className="text-[11px] font-semibold text-white/30 mb-5 tracking-[0.15em] uppercase">Cursos</h4>
-            <ul className="space-y-3 text-[13px] text-white/20">
-              <li><span className="hover:text-white/40 transition-colors cursor-pointer">Starlink Básico</span></li>
-              <li><span className="hover:text-white/40 transition-colors cursor-pointer">Starlink Avanzado</span></li>
-              <li><span className="hover:text-white/40 transition-colors cursor-pointer">Starlink Empresarial</span></li>
+            <h4 className="text-[11px] font-semibold text-white/70 mb-5 tracking-[0.15em] uppercase">Cursos</h4>
+            <ul className="space-y-3 text-[13px] text-white/70">
+              <li><span className="hover:text-white/80 transition-colors cursor-pointer">Starlink Básico</span></li>
+              <li><span className="hover:text-white/80 transition-colors cursor-pointer">Starlink Avanzado</span></li>
+              <li><span className="hover:text-white/80 transition-colors cursor-pointer">Starlink Empresarial</span></li>
             </ul>
           </div>
 
           {/* Legal */}
           <div>
-            <h4 className="text-[11px] font-semibold text-white/30 mb-5 tracking-[0.15em] uppercase">Legal</h4>
-            <ul className="space-y-3 text-[13px] text-white/20">
-              <li><span className="hover:text-white/40 transition-colors cursor-pointer">Términos y condiciones</span></li>
-              <li><span className="hover:text-white/40 transition-colors cursor-pointer">Política de privacidad</span></li>
-              <li><span className="hover:text-white/40 transition-colors cursor-pointer">Política de reembolso</span></li>
+            <h4 className="text-[11px] font-semibold text-white/70 mb-5 tracking-[0.15em] uppercase">Legal</h4>
+            <ul className="space-y-3 text-[13px] text-white/70">
+              <li><span className="hover:text-white/80 transition-colors cursor-pointer">Términos y condiciones</span></li>
+              <li><span className="hover:text-white/80 transition-colors cursor-pointer">Política de privacidad</span></li>
+              <li><span className="hover:text-white/80 transition-colors cursor-pointer">Política de reembolso</span></li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="text-[11px] font-semibold text-white/30 mb-5 tracking-[0.15em] uppercase">Contacto</h4>
-            <ul className="space-y-3 text-[13px] text-white/20">
+            <h4 className="text-[11px] font-semibold text-white/70 mb-5 tracking-[0.15em] uppercase">Contacto</h4>
+            <ul className="space-y-3 text-[13px] text-white/70">
               <li>comercial@soingtel.com</li>
               <li>+57 310 885 4258</li>
               <li>Calle 67a Bis A #60-21, Bogotá, Colombia, 111221</li>

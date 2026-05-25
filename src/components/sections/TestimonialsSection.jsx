@@ -23,7 +23,7 @@ function TestimonialCard({ testimonial, index }) {
       </div>
 
       {/* Quote */}
-      <p className="text-[14px] text-white/40 leading-relaxed mb-7">
+      <p className="text-[14px] text-white/80 leading-relaxed mb-7">
         &ldquo;{testimonial.text}&rdquo;
       </p>
 
@@ -34,7 +34,7 @@ function TestimonialCard({ testimonial, index }) {
         </div>
         <div>
           <p className="text-sm font-medium text-white/70">{testimonial.name}</p>
-          <div className="flex items-center gap-2 text-[11px] text-white/25">
+          <div className="flex items-center gap-2 text-[11px] text-white/70">
             <span>{testimonial.role}</span>
             <span className="w-0.5 h-0.5 rounded-full bg-white/20" />
             <span className="flex items-center gap-1">
