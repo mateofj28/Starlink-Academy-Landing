@@ -43,7 +43,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[11px] font-medium tracking-[0.15em] uppercase text-white/40 border border-white/[0.06] bg-white/[0.02]">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[11px] font-medium tracking-[0.15em] uppercase text-white/80 border border-white/[0.06] bg-white/[0.02]">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               Internet satelital de nueva generación
             </span>
@@ -65,7 +65,7 @@ export default function HeroSection() {
 
           {/* Subtitle */}
           <motion.p
-            className="mt-8 text-base md:text-lg text-white/80 max-w-xl mx-auto leading-relaxed"
+            className="mt-8 text-base md:text-lg text-white max-w-xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
