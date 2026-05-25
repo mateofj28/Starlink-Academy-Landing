@@ -63,7 +63,7 @@ export default function Navbar() {
               <button
                 key={link.to}
                 onClick={() => handleNav(link.to)}
-                className="text-[13px] font-medium text-white/80 hover:text-white transition-colors duration-300 cursor-pointer tracking-wide"
+                className="text-[13px] font-medium text-white hover:text-white transition-colors duration-300 cursor-pointer tracking-wide"
               >
                 {link.label}
               </button>
