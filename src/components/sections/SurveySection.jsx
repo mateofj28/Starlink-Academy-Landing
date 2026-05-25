@@ -107,21 +107,21 @@ export default function SurveySection() {
           <div className="flex items-center justify-center gap-4">
             <button
               onClick={() => setWantsToParticipate(true)}
-              className={`px-8 py-3.5 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer ${wantsToParticipate === true
-                ? 'bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.15)]'
-                : 'border border-white/[0.1] text-white/50 hover:border-white/20 hover:text-white/70'
+              className={`px-8 py-3.5 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${wantsToParticipate === true
+                ? 'bg-emerald-500 text-white shadow-[0_0_25px_rgba(16,185,129,0.3)] scale-105'
+                : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/20 hover:border-emerald-500/50'
                 }`}
             >
-              Sí, me interesa
+              ✓ Sí, me interesa
             </button>
             <button
               onClick={() => setWantsToParticipate(false)}
-              className={`px-8 py-3.5 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer ${wantsToParticipate === false
-                ? 'bg-white/10 text-white border border-white/10'
-                : 'border border-white/[0.1] text-white/50 hover:border-white/20 hover:text-white/70'
+              className={`px-8 py-3.5 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${wantsToParticipate === false
+                ? 'bg-red-500/80 text-white shadow-[0_0_25px_rgba(239,68,68,0.2)] scale-105'
+                : 'bg-red-500/10 text-red-400 border border-red-500/30 hover:bg-red-500/20 hover:border-red-500/50'
                 }`}
             >
-              No, gracias
+              ✗ No, gracias
             </button>
           </div>
         </motion.div>
